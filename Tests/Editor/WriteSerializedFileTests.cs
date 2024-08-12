@@ -265,8 +265,8 @@ namespace UnityEditor.Build.Pipeline.Tests
             for (int i = 0; i < count; i++)
             {
 #if UNITY_2020_1_OR_NEWER
-                m_PreviousMasterTextureLimits.Add(QualitySettings.masterTextureLimit);
-                QualitySettings.masterTextureLimit = 0;
+                m_PreviousMasterTextureLimits.Add(QualitySettings.globalTextureMipmapLimit);
+                QualitySettings.globalTextureMipmapLimit = 0;
 #endif
                 m_PreviousMaximumLODLeve.Add(QualitySettings.maximumLODLevel);
                 QualitySettings.maximumLODLevel = 0;
@@ -281,7 +281,7 @@ namespace UnityEditor.Build.Pipeline.Tests
 
             for (int i = 0; i < m_PreviousMasterTextureLimits.Count; i++)
             {
-                QualitySettings.masterTextureLimit = limit;
+                QualitySettings.globalTextureMipmapLimit = limit;
                 QualitySettings.IncreaseLevel();
             }
         }
@@ -306,7 +306,7 @@ namespace UnityEditor.Build.Pipeline.Tests
             for (int i = 0; i < count; i++)
             {
 #if UNITY_2020_1_OR_NEWER
-                QualitySettings.masterTextureLimit = m_PreviousMasterTextureLimits[i];
+                QualitySettings.globalTextureMipmapLimit = m_PreviousMasterTextureLimits[i];
 #endif
                 QualitySettings.maximumLODLevel = m_PreviousMaximumLODLeve[i];
                 QualitySettings.IncreaseLevel();
